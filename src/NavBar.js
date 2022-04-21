@@ -16,9 +16,8 @@ function NavBar(){
     const navigate = useNavigate();
 
 return(
-<div>
-<p>Ramne Data</p>
-<button onClick={() =>navigate('/')}>Home</button>
+<div class="p-3 mb-2 bg-info text-white">
+<button class="btn btn-success" onClick={() =>navigate('/')}>Ramen Data</button>
 </div>
     
 )

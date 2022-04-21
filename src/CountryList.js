@@ -27,7 +27,7 @@ let data = (ListData.length ==0 || picsData.length == 0) ? <div />:  <div class=
 <div class="row justify-content-center">
 {ListData.map((i,index) =>
 i.Country==country?
-<div class = "card m-3" style={{width: "50%"}} key ={i.Brand + index}>
+<div class = "card m-3" style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
     <img class="card-img-top" src={picsData[randomInteger(0,5)].Image} style={{width:"90%",margin:"2%",height:"40%"}}  alt="Card image" />
     <div class="card-body">
     <p class="card-text">Brand : {i.Brand}</p>

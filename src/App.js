@@ -9,13 +9,14 @@ import {
 import CountryName from './CountryName';
 import CountryList from './CountryList';
 import Navbar from './NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
+    <div class="h-100 bg-dark ">
     <Router>
       <div class="App">
       <Navbar/>
-
           <Routes>
                  <Route exact path='/' element={< CountryName />}></Route>
                  <Route path='/:country' element={< CountryList />}></Route>
@@ -23,7 +24,7 @@ function App() {
       </div>
        
     </Router>
-
+</div>
   );
 }
 

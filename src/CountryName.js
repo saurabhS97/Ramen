@@ -47,7 +47,7 @@ const [picsList,setPicsList] = useState([]);
    <div class="container">
      <div class="row justify-content-center p-3" >
        {cList.map((i,index)=><div class="col-md-3">
-         <button type="button" class="btn btn-primary m-3 w-15" onClick={_=>countryRoute(i)}>{i}</button>
+         <button type="button" class="btn btn-primary btn-block m-3" style={{width:"100%", height:"80%"}} onClick={_=>countryRoute(i)}>{i}</button>
          </div>)}
       </div>      
     </div>
@@ -61,7 +61,7 @@ const [picsList,setPicsList] = useState([]);
 
 
   return (
-    <div class="CountryName">
+    <div class="h-100 bg-dark ">
         <div>
         {countryNameList}
         </div>
