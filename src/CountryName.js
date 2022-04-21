@@ -1,0 +1,73 @@
+import logo from './logo.svg';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useHistory
+} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
+function CountryName(props) {
+
+
+const [listData, setListData] = useState([]);
+const [picsList,setPicsList] = useState([]);
+
+  React.useEffect(() => {
+    fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/TopRamen8d30951.json')
+    .then(response => response.json())
+    .then(data => setListData(data));
+   },[]);
+
+   React.useEffect(() => {
+    fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json')
+    .then(response => response.json())
+    .then(data => setPicsList(data));
+   },[]);
+
+
+   
+  let countryList = listData.map((i)=>i.Country)
+  let cList = [...new Set(countryList)]
+  const navigate = useNavigate();
+  
+   const countryRoute=(i)=>{
+      console.log("i",props)
+      console.log("went here");
+      navigate('/'+i , { state: { ListData: listData, country: i, picsData: picsList } });
+
+
+   }
+
+  let countryNameList = listData.length ==0? <div />: 
+   <div class="container">
+     <div class="row justify-content-center p-3" >
+       {cList.map((i,index)=><div class="col-md-3">
+         <button type="button" class="btn btn-primary m-3 w-15" onClick={_=>countryRoute(i)}>{i}</button>
+         </div>)}
+      </div>      
+    </div>
+
+
+
+
+
+ 
+
+
+
+  return (
+    <div class="CountryName">
+        <div>
+        {countryNameList}
+        </div>
+    </div>      
+
+  );
+}
+
+export default CountryName;
