@@ -14,21 +14,29 @@ import { useNavigate } from 'react-router-dom';
 
 
 function CountryList(props) {
+  const navigate = useNavigate();
 
   const {state} = useLocation();
-  const { ListData, country, picsData } = state; // Read values passed on state
-console.log("ListData",ListData)
+  const { ListData, country, picsData } = state; 
+  console.log("ListData",ListData)
 
 function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+
+const routeBrand=(i)=>{
+  console.log("nameee",i)
+  navigate('/Brand/'+i.Brand, { state: { ListData: ListData, country: i.Brand, picsData: picsData } });
+}
+
+
 let data = (ListData.length ==0 || picsData.length == 0) ? <div />:  <div class="container">
 <div class="row justify-content-center">
 {ListData.map((i,index) =>
 i.Country==country?
-<div class = "card m-3" style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
-    <img class="card-img-top" src={picsData[randomInteger(0,5)].Image} style={{width:"90%",margin:"2%",height:"40%"}}  alt="Card image" />
+<div  class="card m-3 justify-content-center " style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
+    <img onClick={_=>routeBrand(i)} class="card-img-top justify-content-center " src={picsData[randomInteger(0,5)].Image} style={{width:"90%",margin:"5%",height:"40%"}}  alt="Card image" />
     <div class="card-body">
     <p class="card-text">Brand : {i.Brand}</p>
     <p class="card-text">Variety : {i.Variety}</p>

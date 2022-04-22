@@ -36,11 +36,7 @@ const [picsList,setPicsList] = useState([]);
   const navigate = useNavigate();
   
    const countryRoute=(i)=>{
-      console.log("i",props)
-      console.log("went here");
       navigate('/'+i , { state: { ListData: listData, country: i, picsData: picsList } });
-
-
    }
 
   let countryNameList = listData.length ==0? <div />: 
@@ -51,13 +47,6 @@ const [picsList,setPicsList] = useState([]);
          </div>)}
       </div>      
     </div>
-
-
-
-
-
- 
-
 
 
   return (
