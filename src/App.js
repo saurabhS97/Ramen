@@ -13,10 +13,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BrandDescription from './BrandDescription';
 
 function App() {
+
   return (
-    <div class="h-100 bg-dark ">
+    <div className="h-100 bg-dark ">
+    
     <Router>
-      <div class="App">
+      <div className="App">
       <Navbar/>
           <Routes>
                  <Route exact path='/' element={< CountryName />}></Route>

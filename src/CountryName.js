@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+
 import React, { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useHistory
-} from 'react-router-dom';
+import {getList }from './redux/listSlice'
+
 import { useNavigate } from 'react-router-dom';
 
 
 function CountryName(props) {
+  const dispatch = useDispatch()
+  const { value } = useSelector((state) => state.lists)
 
-
-const [listData, setListData] = useState([]);
+let listData=value
+// const [listData, setListData] = useState([]);
 
   React.useEffect(() => {
-    fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/TopRamen8d30951.json')
-    .then(response => response.json())
-    .then(data => setListData(data));
+  //  dispatch(setValue([""]))
+   dispatch(getList())
    },[]);
 
 
@@ -33,17 +30,17 @@ const [listData, setListData] = useState([]);
    }
 
   let countryNameList = listData.length ==0? <div />: 
-   <div class="container">
-     <div class="row justify-content-center p-3" >
-       {cList.map((i,index)=><div class="col-md-3">
-         <button type="button" class="btn btn-primary btn-block m-3" style={{width:"100%", height:"80%"}} onClick={_=>countryRoute(i)}>{i}</button>
+   <div className="container">
+     <div className="row justify-content-center p-3" >
+       {cList.map((i,index)=><div className="col-md-3" key={index}>
+         <button type="button" key={i.Brand + index} className="btn btn-primary btn-block m-5 rounded-pill text-uppercase fs-5" style={{width:"100%", height:"50%"}} onClick={_=>countryRoute(i)}>{i}</button>
          </div>)}
       </div>      
     </div>
 
 
   return (
-    <div class="h-100 bg-dark ">
+    <div className="h-100 bg-dark ">
         <div>
         {countryNameList}
         </div>

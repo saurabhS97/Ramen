@@ -16,10 +16,10 @@ function NavBar(){
     const navigate = useNavigate();
 
 return(
-<div class="p-3 mb-2 bg-info text-white">
-<button class="btn btn-success" onClick={() =>navigate('/')}>Ramen Data</button>
-</div>
-    
+<div className="p-3 mb-2 bg-info text-white">
+<button className="btn btn-success btn-block rounded-pill text-uppercase fs-4 text-left mx-3 text-sm-left" style={{ textAlign:"left"}} onClick={() => navigate(-1)}>Back</button>
+<button className="btn btn-success btn-block rounded-pill text-uppercase fs-4"  onClick={() =>navigate('/')}>Ramen Data</button>
+</div>    
 )
 }
 
