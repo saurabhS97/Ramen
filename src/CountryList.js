@@ -84,7 +84,7 @@ let data = (ListDataRef.length == 0 ) ? <div />:
 i.Country==country?
 <div  onClick={_=>routeBrand(i)} className="card m-3 text-left blockquote" style={{width: "50%", height:"40%", textAlign:"left"}} key ={i.Brand + index}>
  <img className="card-img-top justify-content-center border border-dark " 
-    src={ picsList.length == 0? "https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" 
+    src={ picsList.length == 0? "https://media.giphy.com/media/kUTME7ABmhYg5J3psM/giphy.gif" 
                           : picsList[randomInteger(0,5)].Image} style={{width:"90%",margin:"5%",height:"40%"}}  alt="Card image" />
     <div className="card-body blockquote text-justify text-left font-weight-bold">
     <li className="card-text text-left">Brand : {i.Brand}</li>
