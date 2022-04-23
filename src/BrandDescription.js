@@ -15,21 +15,22 @@ import {
 function BrandDescription(){
     const navigate = useNavigate();
     const {state} = useLocation();
-    const { ListData, brand, picsData } = state; 
+    const { ListData, brand } = state; 
     function randomInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
 
     console.log("brand",brand)
-    let data = (ListData.length ==0 || picsData.length == 0) ? <div />:  <div class="container">
+    console.log("ListData",ListData)
+
+    let data = (ListData.length ==0 ) ? <div><p>sadas</p></div>:  
+    <div class="container">
     <div class="row justify-content-center">
     {ListData.map((i,index) =>
-    i.data==brand?
-    <div  class="card m-3" style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
-        {/* <img class="card-img-top " src={picsData[randomInteger(0,5)].Image} style={{width:"90%",margin:"2%",height:"40%"}}  alt="Card image" /> */}
+    i.Brand==brand?
+    <div class="card m-3" style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
         <div class="card-body text-dark">
         <p class="card-text ">Brand</p>
-
         <p class="card-text">Brand : {i.Brand}</p>
         <p class="card-text">Variety : {i.Variety}</p>
         <p class="card-text">Style : {i.Style}</p>

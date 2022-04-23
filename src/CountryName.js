@@ -15,18 +15,11 @@ function CountryName(props) {
 
 
 const [listData, setListData] = useState([]);
-const [picsList,setPicsList] = useState([]);
 
   React.useEffect(() => {
     fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/TopRamen8d30951.json')
     .then(response => response.json())
     .then(data => setListData(data));
-   },[]);
-
-   React.useEffect(() => {
-    fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json')
-    .then(response => response.json())
-    .then(data => setPicsList(data));
    },[]);
 
 
@@ -36,7 +29,7 @@ const [picsList,setPicsList] = useState([]);
   const navigate = useNavigate();
   
    const countryRoute=(i)=>{
-      navigate('/'+i , { state: { ListData: listData, country: i, picsData: picsList } });
+      navigate('/'+i , { state: { ListData: listData, country: i } });
    }
 
   let countryNameList = listData.length ==0? <div />: 

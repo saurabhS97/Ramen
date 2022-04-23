@@ -23,20 +23,40 @@ function CountryList(props) {
 function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+  const [picsList,setPicsList] = useState([]);
+
+  React.useEffect(() => {
+  setTimeout(function() {
+      fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json')
+      .then(response => response.json())
+      .then(data => setPicsList([data])); 
+    }, 1000);
+  },[]);  
+
 
 
 const routeBrand=(i)=>{
-  console.log("nameee",i)
-  navigate('/Brand/'+i.Brand, { state: { ListData: ListData, country: i.Brand, picsData: picsData } });
+  console.log("ibrand",i.Brand)
+  navigate('/Brand/'+i.Brand, { state: { ListData: ListData, brand: i.Brand } });
 }
 
 
-let data = (ListData.length ==0 || picsData.length == 0) ? <div />:  <div class="container">
+console.log("picsList",picsList)
+if(picsList.length>0){
+console.log("picsList1",picsList[0][1].Image)
+}
+
+
+let data = (ListData.length ==0 ) ? <div />: 
+
+<div class="container">
 <div class="row justify-content-center">
 {ListData.map((i,index) =>
 i.Country==country?
-<div  class="card m-3 justify-content-center " style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
-    <img onClick={_=>routeBrand(i)} class="card-img-top justify-content-center " src={picsData[randomInteger(0,5)].Image} style={{width:"90%",margin:"5%",height:"40%"}}  alt="Card image" />
+<div  onClick={_=>routeBrand(i)} class="card m-3 justify-content-center " style={{width: "50%", height:"40%"}} key ={i.Brand + index}>
+ <img class="card-img-top justify-content-center " 
+    src={ picsList.length == 0? "https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" 
+                          : picsList[0][randomInteger(0,5)].Image} style={{width:"90%",margin:"5%",height:"40%"}}  alt="Card image" />
     <div class="card-body">
     <p class="card-text">Brand : {i.Brand}</p>
     <p class="card-text">Variety : {i.Variety}</p>
