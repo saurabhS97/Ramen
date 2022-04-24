@@ -34,7 +34,6 @@ function CountryList(props) {
 setPicsList(value)
     },1000)
   },[value])
-  console.log("picsList",picsList)
   let ListData = list.value
   const[ListDataRef,setListData] = useState(ListData);
 
@@ -60,18 +59,6 @@ setPicsList(value)
   },[]);  
 
 
-
-// if(ListDataRef.length > 0){
-//   console.log("ListDataRef",document.getElementById("box").getBoundingClientRect().height)
-// if (document.getElementById("box").getBoundingClientRect().height<600){
-//   var newData = ListDataRef.concat(ListData);
-//   console.log("as",newData)
-//   console.log("reached bottom 2",newData);
-
-//   setListData(newData);
-
-// }
-// }
 
 
 
