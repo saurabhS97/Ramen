@@ -1,13 +1,12 @@
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 // apiCall
-export const getPicList = createAsyncThunk('pics/getData', async () => {
+export const getPicList = createAsyncThunk('pics/getData', async () => {    
   const res = await fetch('https://s3-ap-southeast-1.amazonaws.com/he-public-data/noodlesec253ad.json').then(
     data=>data.json()
   )
   return res
 })
-
 export const picSlice = createSlice({
   name: 'picsList',
   initialState: {

@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, { useState,useMemo,_ } from 'react';
+import React, { useState,useMemo,_, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch,useSelector } from 'react-redux'
@@ -28,7 +28,13 @@ function CountryList(props) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   // const [picsList,setPicsList] = useState([]);
-  let picsList=value
+  const [picsList,setPicsList]= React.useState([])
+  useEffect(()=>{
+    setTimeout(()=>{
+setPicsList(value)
+    },1000)
+  },[value])
+  console.log("picsList",picsList)
   let ListData = list.value
   const[ListDataRef,setListData] = useState(ListData);
 
@@ -50,9 +56,7 @@ function CountryList(props) {
   
 
   React.useEffect(() => {
-  setTimeout(function() {
     dispatch(getPicList())
-    }, 1000);
   },[]);  
 
 
