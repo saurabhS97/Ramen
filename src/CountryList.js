@@ -20,16 +20,17 @@ import {getPicList }from './redux/picSlice'
 function CountryList(props) {
   const dispatch = useDispatch()
   const { value } = useSelector((state) => state.picsList)
-
+  const list=  useSelector((state) => state.lists)
   const navigate = useNavigate();
   const {state} = useLocation();
-  let { ListData, country, picsData } = state;
-  const[ListDataRef,setListData] = useState(ListData);
+  let {  country, picsData } = state;
   function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   // const [picsList,setPicsList] = useState([]);
   let picsList=value
+  let ListData = list.value
+  const[ListDataRef,setListData] = useState(ListData);
 
   const listInnerRef = useRef();
 
@@ -76,6 +77,8 @@ const routeBrand=(i)=>{
 }
 
 
+
+
 let data = (ListDataRef.length == 0 ) ? <div />: 
 
 <div className="container" ref={listInnerRef}  id="box" >
@@ -108,7 +111,7 @@ return (
     <div className="row justify-content-center p-3" >
        
     {data}
- 
+
      </div>      
    </div>     
 

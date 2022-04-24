@@ -12,14 +12,10 @@ function CountryName(props) {
   const { value } = useSelector((state) => state.lists)
 
 let listData=value
-// const [listData, setListData] = useState([]);
 
   React.useEffect(() => {
-  //  dispatch(setValue([""]))
    dispatch(getList())
    },[]);
-
-
    
   let countryList = listData.map((i)=>i.Country)
   let cList = [...new Set(countryList)]

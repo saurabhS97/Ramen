@@ -22,7 +22,9 @@ export const listSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(getList.fulfilled, (state, action) => {
       // Add user to the state array
-      state.value=action.payload
+      let arr = action.payload
+
+      state.value=arr.concat(action.payload)
     })
   }
 })
