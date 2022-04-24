@@ -18,7 +18,7 @@ function NavBar(){
 return(
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <a className="navbar-brand px-3" onClick={() => navigate(-1)}>BACK</a>
-      <button className="nav-link btn navbar-brand btn-block rounded-pill fs-4" onClick={() =>navigate('/')}><span class="sr-only">Ramen Data</span></button>
+      <button className="nav-link btn navbar-brand btn-block rounded-pill fs-4" onClick={() =>navigate('/')}><span class="sr-only">Noodles Webapp</span></button>
 </nav>
 
 )
